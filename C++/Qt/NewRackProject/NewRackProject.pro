@@ -13,8 +13,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        racksystem.cpp
+        racksystem.cpp \
+    rackwidget.cpp
 
-HEADERS  += racksystem.h
+HEADERS  += racksystem.h \
+    rackwidget.h
 
 FORMS    += racksystem.ui

@@ -2,6 +2,11 @@
 #define RACKSYSTEM_H
 
 #include <QMainWindow>
+#include <QVBoxLayout>
+#include <QString>
+
+#include "rackwidget.h"
+
 
 namespace Ui {
 class RackSystem;
@@ -14,6 +19,7 @@ class RackSystem : public QMainWindow
 public:
     explicit RackSystem(QWidget *parent = 0);
     ~RackSystem();
+    RackWidget *createRack();
 
 private:
     Ui::RackSystem *ui;
