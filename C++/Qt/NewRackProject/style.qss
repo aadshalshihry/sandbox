@@ -1,0 +1,3 @@
+QGroupBox {
+background-color: black;
+}

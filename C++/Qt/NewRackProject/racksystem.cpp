@@ -8,8 +8,6 @@ RackSystem::RackSystem(QWidget *parent) :
     ui->setupUi(this);
 
     QVBoxLayout *systemLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
-
-    systemLayout->setSpacing(0);
     systemLayout->addWidget(createRack());
 }
 

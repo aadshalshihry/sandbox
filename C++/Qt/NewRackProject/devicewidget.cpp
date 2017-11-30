@@ -17,14 +17,30 @@ DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<
 
 }
 
+/** Todo:
+ *
+ *  1. Create mvs inside this class
+ *  2. get the size of mvs from the rackwidget
+ *  3. use qfram with vms
+ *  4.
+ *
+ * **/
+
+/**
+ * @brief DeviceWidget::createDevice
+ * @return QGroupBox
+ *
+ * Create device and create title & vms inside it
+ */
 QGroupBox *DeviceWidget::createDevice()
 {
     QGroupBox *gp = new QGroupBox(tr("Title one"), this);
-    gp->setStyleSheet("background-color: gray;");
-    gp->setMinimumWidth(400);
+    gp->setStyleSheet("background-color: gray; color: white");
+//    gp->setMinimumWidth(400);
 
     machineLayout = new QHBoxLayout(gp);
 
+    // Create vm here
     QPushButton *p2 = new QPushButton(tr("p2"));
     machineLayout->addWidget(p2);
 

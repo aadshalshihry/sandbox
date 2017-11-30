@@ -6,7 +6,6 @@
 #include <QGroupBox>
 #include <QString>
 #include <QPalette>
-#include <QLabel> // Remove in future
 
 #include "customdatatype.h"
 #include "vmwidget.h"
@@ -22,7 +21,7 @@ private:
     int machineNum;
     QString rackName;
     State machineState;
-    QVector<QBool> *filled;
+    QVector<bool> *filled;
     QVector<VMWidget> *machines;
 
     QPalette operational;
