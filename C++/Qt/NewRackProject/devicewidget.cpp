@@ -1,6 +1,6 @@
 #include "devicewidget.h"
-#include <QPushButton>
-#include <QVBoxLayout>
+
+
 
 DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<VMWidget> *vMs) :
     QWidget(parent)
@@ -10,9 +10,9 @@ DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<
     this->vMs = vMs;
 
     QVBoxLayout *l = new QVBoxLayout(parent);
+    parent->layout()->addWidget(createDevice());
 
 //    l->addWidget(createDevice());
-    parent->layout()->addWidget(createDevice());
 
 
 }
@@ -36,17 +36,19 @@ QGroupBox *DeviceWidget::createDevice()
 {
     QGroupBox *gp = new QGroupBox(tr("Title one"), this);
     gp->setStyleSheet("background-color: gray; color: white");
-//    gp->setMinimumWidth(400);
 
     machineLayout = new QHBoxLayout(gp);
 
-    // Create vm here
-    QPushButton *p2 = new QPushButton(tr("p2"));
-    machineLayout->addWidget(p2);
 
-    QPushButton *p3 = new QPushButton(tr("p3"));
-    machineLayout->addWidget(p3);
-    p2->setStyleSheet("QPushButton {background: green; color: white;}");
+    // Create vm here
+
+    QLabel *q = new QLabel();
+    q->setStyleSheet("QWidget {background: #222222; }");
+    q->setText("H");
+    q->setFixedWidth(q->text().length() * 13);
+    q->setAlignment(Qt::AlignCenter);
+    machineLayout->addWidget(q);
+
 
     return gp;
 }

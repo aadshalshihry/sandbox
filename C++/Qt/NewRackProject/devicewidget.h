@@ -4,6 +4,9 @@
 #include <QWidget>
 #include <QGroupBox>
 #include <QHBoxLayout>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QLabel>
 
 
 #include "customdatatype.h"
