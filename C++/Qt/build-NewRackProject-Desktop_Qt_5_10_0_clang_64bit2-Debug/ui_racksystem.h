@@ -15,7 +15,6 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -24,8 +23,6 @@ class Ui_RackSystem
 {
 public:
     QWidget *centralWidget;
-    QScrollArea *scrollArea;
-    QWidget *scrollAreaWidgetContents;
 
     void setupUi(QMainWindow *RackSystem)
     {
@@ -35,15 +32,6 @@ public:
         centralWidget = new QWidget(RackSystem);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setStyleSheet(QStringLiteral(""));
-        scrollArea = new QScrollArea(centralWidget);
-        scrollArea->setObjectName(QStringLiteral("scrollArea"));
-        scrollArea->setGeometry(QRect(0, 0, 400, 500));
-        scrollArea->setWidgetResizable(true);
-        scrollAreaWidgetContents = new QWidget();
-        scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 398, 498));
-        scrollAreaWidgetContents->setStyleSheet(QStringLiteral(""));
-        scrollArea->setWidget(scrollAreaWidgetContents);
         RackSystem->setCentralWidget(centralWidget);
 
         retranslateUi(RackSystem);

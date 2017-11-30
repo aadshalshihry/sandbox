@@ -38,8 +38,9 @@ RackWidget::RackWidget(QWidget *parent, int machineNum, QString name, State stat
 QGroupBox *RackWidget::createRack()
 {
     QGroupBox *groupBox = new QGroupBox;
+    groupBox->setStyleSheet("padding-top: 0px;");
 //    groupBox->setMinimumWidth(400);
-//    groupBox->setStyleSheet("background-color: yellow;");
+    groupBox->setStyleSheet("background-color: yellow;");
 //    QVBoxLayout *layout = new QVBoxLayout;
 
 

@@ -1,5 +1,7 @@
 #include "devicewidget.h"
 
+#include "vmwidget.h"
+
 
 
 DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<VMWidget> *vMs) :
@@ -20,9 +22,6 @@ DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<
 /** Todo:
  *
  *  1. Create mvs inside this class
- *  2. get the size of mvs from the rackwidget
- *  3. use qfram with vms
- *  4.
  *
  * **/
 
@@ -41,13 +40,14 @@ QGroupBox *DeviceWidget::createDevice()
 
 
     // Create vm here
+    VMWidget *vm = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm->createVM());
 
-    QLabel *q = new QLabel();
-    q->setStyleSheet("QWidget {background: #222222; }");
-    q->setText("H");
-    q->setFixedWidth(q->text().length() * 13);
-    q->setAlignment(Qt::AlignCenter);
-    machineLayout->addWidget(q);
+    VMWidget *vm1 = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm1->createVM());
+
+    VMWidget *vm2 = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm2->createVM());
 
 
     return gp;
