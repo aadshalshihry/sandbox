@@ -48,28 +48,19 @@
 **
 ****************************************************************************/
 
-#ifndef WINDOWS_H
-#define WINDOWS_H
+#include "button.h"
 
-#include <QWidget>
-#include <QGroupBox>
-#include <QGridLayout>
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QMenu>
-
-class windows : public QWidget
+Button::Button(const QString &text, QWidget *parent)
+    : QToolButton(parent)
 {
-    Q_OBJECT
-public:
-    explicit windows(QWidget *parent = 0);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    setText(text);
+}
 
-private:
-    QGroupBox *createFirstExclusiveGroup();
-    QGroupBox *createSecondExclusiveGroup();
-    QGroupBox *createNonExclusiveGroup();
-    QGroupBox *createPushButtonGroup();
-};
-
-#endif // WINDOWS_H
+QSize Button::sizeHint() const
+{
+    QSize size = QToolButton::sizeHint();
+    size.rheight() += 20;
+    size.rwidth() = qMax(size.width(), size.height());
+    return size;
+}

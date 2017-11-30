@@ -1,3 +1,4 @@
+
 /****************************************************************************
 **
 ** Copyright (C) 2016 The Qt Company Ltd.
@@ -48,28 +49,57 @@
 **
 ****************************************************************************/
 
-#ifndef WINDOWS_H
-#define WINDOWS_H
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
 
 #include <QWidget>
-#include <QGroupBox>
+#include <QLineEdit>
 #include <QGridLayout>
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QMenu>
 
-class windows : public QWidget
+//class QLineEdit;
+
+class Button;
+
+class Calculator : public QWidget
 {
     Q_OBJECT
+
 public:
-    explicit windows(QWidget *parent = 0);
+    Calculator(QWidget *parent = 0);
+    ~Calculator();
+
+private slots:
+    void digitClicked();
+    void unaryOperatorClicked();
+    void additiveOperatorClicked();
+    void multiplicativeOperatorClicked();
+    void equalClicked();
+    void pointClicked();
+    void changeSignClicked();
+    void backspaceClicked();
+    void clear();
+    void clearAll();
+    void clearMemory();
+    void readMemory();
+    void setMemory();
+    void addToMemory();
 
 private:
-    QGroupBox *createFirstExclusiveGroup();
-    QGroupBox *createSecondExclusiveGroup();
-    QGroupBox *createNonExclusiveGroup();
-    QGroupBox *createPushButtonGroup();
+    Button *createButton(const QString &text, const char *member);
+    void abortOperation();
+    bool calculate(double rightOperand, const QString &pendingOperator);
+
+    double sumInMemory;
+    double sumSoFar;
+    double factorSoFar;
+    QString pendingAdditiveOperator;
+    QString pendingMultiplicativeOperator;
+    bool waitingForOperand;
+
+    QLineEdit *display;
+
+    enum { NumDigitButtons = 10 };
+    Button *digitButtons[NumDigitButtons];
 };
 
-#endif // WINDOWS_H
+#endif // CALCULATOR_H

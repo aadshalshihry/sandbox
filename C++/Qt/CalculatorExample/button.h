@@ -48,28 +48,22 @@
 **
 ****************************************************************************/
 
-#ifndef WINDOWS_H
-#define WINDOWS_H
 
-#include <QWidget>
-#include <QGroupBox>
-#include <QGridLayout>
-#include <QRadioButton>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QMenu>
+#ifndef BUTTON_H
+#define BUTTON_H
 
-class windows : public QWidget
+#include <QToolButton>
+#include <QSize>
+
+class Button : public QToolButton
 {
     Q_OBJECT
-public:
-    explicit windows(QWidget *parent = 0);
 
-private:
-    QGroupBox *createFirstExclusiveGroup();
-    QGroupBox *createSecondExclusiveGroup();
-    QGroupBox *createNonExclusiveGroup();
-    QGroupBox *createPushButtonGroup();
+public:
+    explicit Button(const QString &text, QWidget *parent = 0);
+
+    QSize sizeHint() const override;
 };
 
-#endif // WINDOWS_H
+#endif
+

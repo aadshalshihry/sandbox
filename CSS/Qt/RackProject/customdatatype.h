@@ -1,5 +1,0 @@
-#ifndef CUSTOMDATATYPE
-#define CUSTOMDATATYPE
-
-#endif // CUSTOMDATATYPE
-

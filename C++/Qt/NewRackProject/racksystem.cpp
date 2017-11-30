@@ -6,7 +6,10 @@ RackSystem::RackSystem(QWidget *parent) :
     ui(new Ui::RackSystem)
 {
     ui->setupUi(this);
+
     QVBoxLayout *systemLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
+
+    systemLayout->setSpacing(0);
     systemLayout->addWidget(createRack());
 }
 
@@ -24,6 +27,7 @@ RackSystem::~RackSystem()
 RackWidget *RackSystem::createRack()
 {
     QString title = "Title one";
-    RackWidget *rw = new RackWidget(this, title);
+    RackWidget *rw = new RackWidget(this, 10, title);
+
     return rw;
 }
