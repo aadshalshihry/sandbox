@@ -10,6 +10,7 @@ MainWindows::MainWindows(QWidget *parent) :
     ui->setupUi(this);
 
     Rack *rack = new Rack(this);
+    rack->addDumyRecord();
 
 }
 
