@@ -1,6 +1,8 @@
 #include "devicewidget.h"
-#include <QPushButton>
-#include <QVBoxLayout>
+
+#include "vmwidget.h"
+
+
 
 DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<VMWidget> *vMs) :
     QWidget(parent)
@@ -10,27 +12,43 @@ DeviceWidget::DeviceWidget(QWidget *parent, QString name, State dState, QVector<
     this->vMs = vMs;
 
     QVBoxLayout *l = new QVBoxLayout(parent);
+    parent->layout()->addWidget(createDevice());
 
 //    l->addWidget(createDevice());
-    parent->layout()->addWidget(createDevice());
 
 
 }
 
+/** Todo:
+ *
+ *  1. Create mvs inside this class
+ *
+ * **/
+
+/**
+ * @brief DeviceWidget::createDevice
+ * @return QGroupBox
+ *
+ * Create device and create title & vms inside it
+ */
 QGroupBox *DeviceWidget::createDevice()
 {
     QGroupBox *gp = new QGroupBox(tr("Title one"), this);
-    gp->setStyleSheet("background-color: gray;");
-    gp->setMinimumWidth(400);
+    gp->setStyleSheet("background-color: gray; color: white");
 
     machineLayout = new QHBoxLayout(gp);
 
-    QPushButton *p2 = new QPushButton(tr("p2"));
-    machineLayout->addWidget(p2);
 
-    QPushButton *p3 = new QPushButton(tr("p3"));
-    machineLayout->addWidget(p3);
-    p2->setStyleSheet("QPushButton {background: green; color: white;}");
+    // Create vm here
+    VMWidget *vm = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm->createVM());
+
+    VMWidget *vm1 = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm1->createVM());
+
+    VMWidget *vm2 = new VMWidget(gp, tr("Title"));
+    machineLayout->addWidget(vm2->createVM());
+
 
     return gp;
 }

@@ -1,5 +1,6 @@
 #include "racksystem.h"
 #include "ui_racksystem.h"
+#include <QScrollArea>
 
 RackSystem::RackSystem(QWidget *parent) :
     QMainWindow(parent),
@@ -7,10 +8,19 @@ RackSystem::RackSystem(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QVBoxLayout *systemLayout = new QVBoxLayout(ui->scrollAreaWidgetContents);
+    QVBoxLayout* layout = new QVBoxLayout();
 
-    systemLayout->setSpacing(0);
-    systemLayout->addWidget(createRack());
+    layout->addWidget(createRack());
+
+    QWidget* contentWidget = new QWidget();
+    contentWidget->setStyleSheet("width: 300px;");
+    contentWidget->setLayout(layout);
+
+    QScrollArea* scrollArea = new QScrollArea();
+
+    scrollArea->setWidget(contentWidget);
+
+    setCentralWidget(scrollArea);
 }
 
 RackSystem::~RackSystem()
