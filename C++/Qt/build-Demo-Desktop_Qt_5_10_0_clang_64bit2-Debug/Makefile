@@ -54,19 +54,23 @@ SOURCES       = ../Demo/main.cpp \
 		../Demo/mainwindows.cpp \
 		../Demo/rack.cpp \
 		../Demo/device.cpp \
-		../Demo/vm.cpp moc_mainwindows.cpp \
+		../Demo/vm.cpp \
+		../Demo/dialog.cpp moc_mainwindows.cpp \
 		moc_rack.cpp \
 		moc_device.cpp \
-		moc_vm.cpp
+		moc_vm.cpp \
+		moc_dialog.cpp
 OBJECTS       = main.o \
 		mainwindows.o \
 		rack.o \
 		device.o \
 		vm.o \
+		dialog.o \
 		moc_mainwindows.o \
 		moc_rack.o \
 		moc_device.o \
-		moc_vm.o
+		moc_vm.o \
+		moc_dialog.o
 DIST          = /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_pre.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/qdevice.pri \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/device_config.prf \
@@ -225,6 +229,7 @@ DIST          = /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_pre.
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/qt_config.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_post.prf \
+		../Demo/.qmake.stash \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/toolchain.prf \
@@ -255,11 +260,13 @@ DIST          = /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_pre.
 		../Demo/Demo.pro ../Demo/mainwindows.h \
 		../Demo/rack.h \
 		../Demo/device.h \
-		../Demo/vm.h ../Demo/main.cpp \
+		../Demo/vm.h \
+		../Demo/dialog.h ../Demo/main.cpp \
 		../Demo/mainwindows.cpp \
 		../Demo/rack.cpp \
 		../Demo/device.cpp \
-		../Demo/vm.cpp
+		../Demo/vm.cpp \
+		../Demo/dialog.cpp
 QMAKE_TARGET  = Demo
 DESTDIR       = 
 TARGET        = Demo.app/Contents/MacOS/Demo
@@ -273,7 +280,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h $(OBJECTS)  
+$(TARGET): ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h ui_dialog.h $(OBJECTS)  
 	@test -d Demo.app/Contents/MacOS/ || mkdir -p Demo.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -435,6 +442,7 @@ Makefile: ../Demo/Demo.pro /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-cl
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/qt_config.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/mac/sdk.prf \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/toolchain.prf \
@@ -625,6 +633,7 @@ Makefile: ../Demo/Demo.pro /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-cl
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/qt_config.prf:
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-clang/qmake.conf:
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/exclusive_builds.prf:
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/mac/sdk.prf:
 /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/toolchain.prf:
@@ -686,9 +695,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Demo/mainwindows.h ../Demo/rack.h ../Demo/device.h ../Demo/vm.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Demo/main.cpp ../Demo/mainwindows.cpp ../Demo/rack.cpp ../Demo/device.cpp ../Demo/vm.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Demo/mainwindows.ui ../Demo/rack.ui ../Demo/device.ui ../Demo/vm.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../Demo/mainwindows.h ../Demo/rack.h ../Demo/device.h ../Demo/vm.h ../Demo/dialog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Demo/main.cpp ../Demo/mainwindows.cpp ../Demo/rack.cpp ../Demo/device.cpp ../Demo/vm.cpp ../Demo/dialog.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Demo/mainwindows.ui ../Demo/rack.ui ../Demo/device.ui ../Demo/vm.ui ../Demo/dialog.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -698,6 +707,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r Demo.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -719,9 +729,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h /Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindows.cpp moc_rack.cpp moc_device.cpp moc_vm.cpp
+compiler_moc_header_make_all: moc_mainwindows.cpp moc_rack.cpp moc_device.cpp moc_vm.cpp moc_dialog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindows.cpp moc_rack.cpp moc_device.cpp moc_vm.cpp
+	-$(DEL_FILE) moc_mainwindows.cpp moc_rack.cpp moc_device.cpp moc_vm.cpp moc_dialog.cpp
 moc_mainwindows.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../Demo/mainwindows.h \
@@ -731,6 +741,14 @@ moc_mainwindows.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framewo
 
 moc_rack.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../Demo/device.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../Demo/vm.h \
 		../Demo/rack.h \
 		moc_predefs.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc
@@ -740,6 +758,9 @@ moc_device.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/He
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../Demo/vm.h \
 		../Demo/device.h \
 		moc_predefs.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc
@@ -747,18 +768,27 @@ moc_device.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/He
 
 moc_vm.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../Demo/vm.h \
 		moc_predefs.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc
 	/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-clang -I/Users/aalshehri08/workspace/sandbox/C++/Qt/Demo -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtGui.framework/Headers -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/aalshehri08/Qt/5.10.0/clang_64/lib ../Demo/vm.h -o moc_vm.cpp
 
+moc_dialog.cpp: /Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../Demo/dialog.h \
+		moc_predefs.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc
+	/Users/aalshehri08/Qt/5.10.0/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/aalshehri08/Qt/5.10.0/clang_64/mkspecs/macx-clang -I/Users/aalshehri08/workspace/sandbox/C++/Qt/Demo -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtGui.framework/Headers -I/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/aalshehri08/Qt/5.10.0/clang_64/lib ../Demo/dialog.h -o moc_dialog.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h
+compiler_uic_make_all: ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h ui_dialog.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h
+	-$(DEL_FILE) ui_mainwindows.h ui_rack.h ui_device.h ui_vm.h ui_dialog.h
 ui_mainwindows.h: ../Demo/mainwindows.ui \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic
 	/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic ../Demo/mainwindows.ui -o ui_mainwindows.h
@@ -774,6 +804,10 @@ ui_device.h: ../Demo/device.ui \
 ui_vm.h: ../Demo/vm.ui \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic
 	/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic ../Demo/vm.ui -o ui_vm.h
+
+ui_dialog.h: ../Demo/dialog.ui \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic
+	/Users/aalshehri08/Qt/5.10.0/clang_64/bin/uic ../Demo/dialog.ui -o ui_dialog.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -791,7 +825,10 @@ main.o: ../Demo/main.cpp ../Demo/mainwindows.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QApplication \
-		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
+		../Demo/dialog.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Demo/main.cpp
 
 mainwindows.o: ../Demo/mainwindows.cpp ../Demo/mainwindows.h \
@@ -800,18 +837,27 @@ mainwindows.o: ../Demo/mainwindows.cpp ../Demo/mainwindows.h \
 		ui_mainwindows.h \
 		../Demo/rack.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
-		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../Demo/device.h \
+		../Demo/vm.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindows.o ../Demo/mainwindows.cpp
 
 rack.o: ../Demo/rack.cpp ../Demo/rack.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QScrollArea \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qscrollarea.h \
-		ui_rack.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		../Demo/device.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
-		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h
+		../Demo/vm.h \
+		ui_rack.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o rack.o ../Demo/rack.cpp
 
 device.o: ../Demo/device.cpp ../Demo/device.h \
@@ -819,17 +865,27 @@ device.o: ../Demo/device.cpp ../Demo/device.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QVector \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qvector.h \
+		../Demo/vm.h \
 		ui_device.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QHBoxLayout \
-		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h \
-		../Demo/vm.h
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qboxlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o device.o ../Demo/device.cpp
 
 vm.o: ../Demo/vm.cpp ../Demo/vm.h \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/QString \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtCore.framework/Headers/qstring.h \
 		ui_vm.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o vm.o ../Demo/vm.cpp
+
+dialog.o: ../Demo/dialog.cpp ../Demo/dialog.h \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		/Users/aalshehri08/Qt/5.10.0/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_dialog.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialog.o ../Demo/dialog.cpp
 
 moc_mainwindows.o: moc_mainwindows.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindows.o moc_mainwindows.cpp
@@ -842,6 +898,9 @@ moc_device.o: moc_device.cpp
 
 moc_vm.o: moc_vm.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_vm.o moc_vm.cpp
+
+moc_dialog.o: moc_dialog.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialog.o moc_dialog.cpp
 
 ####### Install
 

@@ -17,6 +17,7 @@ VM::VM(QWidget *parent, QString name):
     ui->setupUi(this);
     this->name = name;
     ui->label->setText(this->name);
+
 //    QSize size = ui->label->sizeHint();
 //    this->setMaximumWidth(size.width() + 25);
 }

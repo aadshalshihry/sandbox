@@ -18,6 +18,7 @@ Device::Device(QWidget *parent, QString name):
     ui->setupUi(this);
     this->name = name;
     this->vms = {};
+    vmsSize = 0;
 
     ui->label->setText(this->name);
 
@@ -28,10 +29,11 @@ Device::Device(QWidget *parent, QString name):
 void Device::addVm(QString name)
 {
     VM *vm = new VM(ui->widget, name);
-    this->vms.append(vms);
+    this->vms.append(vm);
     this->setMinimumHeight(60);
     ui->widget->setMinimumHeight(148);
     ui->horizontalLayout_2->addWidget(vm);
+    this->vmsSize++;
 }
 
 Device::~Device()

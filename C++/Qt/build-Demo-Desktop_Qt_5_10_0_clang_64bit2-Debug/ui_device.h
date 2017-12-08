@@ -43,7 +43,8 @@ public:
         Device->setStyleSheet(QLatin1String("background: #8dae4e; \n"
 "margin-top: 2px;\n"
 "border-radius: 3px;\n"
-"border: 1px solid gray;"));
+"border: 1px solid black;\n"
+""));
         label = new QLabel(Device);
         label->setObjectName(QStringLiteral("label"));
         label->setEnabled(true);

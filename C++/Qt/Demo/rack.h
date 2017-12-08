@@ -21,11 +21,12 @@ public:
     void addDumyRecord();
 
     ~Rack();
+    QVector<Device*> devices;
+    int deviceSize;
 
 private:
     Ui::Rack *ui;
 
-    QVector<Device*> devices;
 };
 
 #endif // RACK_H

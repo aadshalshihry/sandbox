@@ -35,7 +35,8 @@
    <string notr="true">background: #8dae4e; 
 margin-top: 2px;
 border-radius: 3px;
-border: 1px solid gray;</string>
+border: 1px solid black;
+</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="enabled">

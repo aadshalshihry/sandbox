@@ -22,10 +22,11 @@ public:
 
     void addVm(QString name);
     ~Device();
+    QVector<VM*> vms;
+    int vmsSize;
 
 private:
     QString name;
-    QVector<VM*> vms;
 
     Ui::Device *ui;
 };
