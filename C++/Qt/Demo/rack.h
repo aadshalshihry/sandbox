@@ -6,6 +6,7 @@
 #include <QString>
 
 #include "device.h"
+#include "newdevice.h"
 
 
 namespace Ui {
@@ -21,7 +22,7 @@ public:
     void addDumyRecord();
 
     ~Rack();
-    QVector<Device*> devices;
+    QVector<NewDevice*> devices;
     int deviceSize;
 
 private:

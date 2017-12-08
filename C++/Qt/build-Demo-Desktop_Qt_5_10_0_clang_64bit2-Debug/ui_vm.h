@@ -30,10 +30,10 @@ public:
     {
         if (VM->objectName().isEmpty())
             VM->setObjectName(QStringLiteral("VM"));
-        VM->resize(124, 25);
-        VM->setStyleSheet(QLatin1String("background: #63823C;\n"
-"border-radius: 3px;\n"
-"padding: 0px;\n"
+        VM->resize(124, 32);
+        VM->setStyleSheet(QLatin1String("background: #00e64d;\n"
+"border-radius: 5px;\n"
+"padding: 3px;\n"
 "margin-left: 5px;"));
         verticalLayout = new QVBoxLayout(VM);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));

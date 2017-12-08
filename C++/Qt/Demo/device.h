@@ -19,9 +19,9 @@ class Device : public QWidget
 public:
     explicit Device(QWidget *parent = 0);
     explicit Device(QWidget *parent = 0, QString name = "");
+    ~Device();
 
     void addVm(QString name);
-    ~Device();
     QVector<VM*> vms;
     int vmsSize;
 

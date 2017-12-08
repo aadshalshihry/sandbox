@@ -7,16 +7,16 @@
     <x>0</x>
     <y>0</y>
     <width>124</width>
-    <height>25</height>
+    <height>32</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background: #63823C;
-border-radius: 3px;
-padding: 0px;
+   <string notr="true">background: #00e64d;
+border-radius: 5px;
+padding: 3px;
 margin-left: 5px;</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">

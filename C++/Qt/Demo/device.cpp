@@ -28,7 +28,7 @@ Device::Device(QWidget *parent, QString name):
 
 void Device::addVm(QString name)
 {
-    VM *vm = new VM(ui->widget, name);
+    VM *vm = new VM(this, name);
     this->vms.append(vm);
     this->setMinimumHeight(60);
     ui->widget->setMinimumHeight(148);

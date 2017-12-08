@@ -44,6 +44,8 @@ private slots:
 
     void on_btn4_3_clicked();
 
+    void on_spinBox_valueChanged(int arg1);
+
 private:
     Ui::MainWindows *ui;
 };

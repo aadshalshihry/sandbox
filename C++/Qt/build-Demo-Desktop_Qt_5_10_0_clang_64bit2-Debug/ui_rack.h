@@ -35,7 +35,7 @@ public:
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QStringLiteral("scrollAreaWidgetContents"));
         scrollAreaWidgetContents->setGeometry(QRect(0, 0, 398, 498));
-        scrollAreaWidgetContents->setStyleSheet(QStringLiteral("background: gray;"));
+        scrollAreaWidgetContents->setStyleSheet(QStringLiteral(""));
         verticalLayout = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));

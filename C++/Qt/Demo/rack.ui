@@ -26,7 +26,7 @@
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background: gray;</string>
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
