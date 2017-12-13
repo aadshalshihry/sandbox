@@ -3,6 +3,10 @@
 
 #include <QWidget>
 #include <QString>
+#include <QVector>
+
+#include "vm.h"
+
 
 namespace Ui {
 class Device;
@@ -17,8 +21,13 @@ public:
     explicit Device(QWidget *parent = 0, QString name = "");
     ~Device();
 
+    void addVm(QString name);
+    QVector<VM*> vms;
+    int vmsSize;
+
 private:
     QString name;
+
     Ui::Device *ui;
 };
 

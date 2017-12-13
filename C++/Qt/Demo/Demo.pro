@@ -16,14 +16,20 @@ SOURCES += main.cpp\
         mainwindows.cpp \
     rack.cpp \
     device.cpp \
-    vm.cpp
+    vm.cpp \
+    dialog.cpp \
+    newdevice.cpp
 
 HEADERS  += mainwindows.h \
     rack.h \
     device.h \
-    vm.h
+    vm.h \
+    dialog.h \
+    newdevice.h
 
 FORMS    += mainwindows.ui \
     rack.ui \
     device.ui \
-    vm.ui
+    vm.ui \
+    dialog.ui \
+    newdevice.ui
