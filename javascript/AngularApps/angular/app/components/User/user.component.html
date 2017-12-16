@@ -1,0 +1,79 @@
+<h1>User</h1>
+<ul>
+    <li *ngFor="let user of list">{{user.firstName}}
+        <button (click)="getOneUser(user.id)">Show</button>
+        <button (click)="deleteUser(user.id)">Delete</button>
+    </li>
+</ul>
+
+
+<button (click)="postForm = !postForm">From</button>
+
+<div *ngIf="postForm" >
+    <form action="" class="form-horizontal" (submit)="addUser($event)">
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+            <input type="text" id="firstName" name="firstName"  [(ngModel)]="currentUser.firstName"  required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+            <input type="text" id="lastName" name="lastName"  [(ngModel)]="currentUser.lastName"  required>
+            <span class="help-block">Last Name, First Name, eg.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">email</label>
+            <input type="email" id="email" name="email"  [(ngModel)]="currentUser.email"  required>
+            <span class="help-block">username@domin.com, eg.</span>
+        </div>
+
+        <div class="form-group">
+            <label for="username" class="col-sm-3 control-label">username</label>
+            <input type="username" id="username" name="username"  [(ngModel)]="currentUser.username"  required>
+        </div>
+
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">password</label>
+            <input type="password" id="password" name="password"  [(ngModel)]="currentUser.password"  required>
+        </div>
+
+        <div class="form-group">
+            <label for="isCooker" class="col-sm-3 control-label">isCooker</label>
+            <input type="checkbox" id="isCooker" name="isCooker"  [(ngModel)]="currentUser.isCooker">
+        </div>
+
+        <div class="form-group">
+            <label for="country" class="col-sm-3 control-label">Country</label>
+            <div class="col-sm-9">
+                <select id="country" class="form-control">
+                    <option>Afghanistan</option>
+                    <option>Bahamas</option>
+                    <option>Cambodia</option>
+                    <option>Denmark</option>
+                    <option>Ecuador</option>
+                    <option>Fiji</option>
+                    <option>Gabon</option>
+                    <option>Haiti</option>
+                </select>
+            </div>
+        </div> <!-- /.form-group -->
+
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                <button type="submit" class="btn btn-primary btn-block">Add User</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div *ngIf="isGetOne">
+    Name: <h2>{{currentUser.firstName}}</h2>
+    username: <h2>{{currentUser.username}}</h2>
+    email: <h2>{{currentUser.email}}</h2>
+    password: <h2>{{currentUser.password}}</h2>
+    Cooker: <h2>{{currentUser.isCooker}}</h2>
+
+</div>
+

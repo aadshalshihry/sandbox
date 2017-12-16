@@ -1,0 +1,13 @@
+// Load variables and base styles
+@import './_variables.scss';
+
+// Component Styles
+@import './components/index.scss';
+
+// Container Styles
+@import './containers/index.scss';
+
+// Global override : to fix material-ui style
+span[type=button] {
+  appearance: none;
+}
